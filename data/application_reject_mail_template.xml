@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="application_reject_email_template" model="mail.template">
+            <field name="name">Application Form: Send By Email</field>
+            <field name="model_id" ref="loan_management_system.model_loan_application"/>
+            <field name="email_from">${object.env.user.work_email | safe} </field>
+            <field name="email_to">${object.employee_id.work_email}</field>
+            <field name="report_template" ref="loan_management_system.action_report_loan_application"/>
+            <field name="report_name">Employee Application Form ${object.employee_id.name}</field>
+            <field name="subject">Your Loan ${object.name} Request has been Rejected </field>
+            <field name="body_html" type="html">
+                <div style="margin:0px; padding:0px;">
+                    <p style="margin:0px; padding:0px; font-size:15px;">
+                        Dear ${object.employee_id.name}
+                        <br/><br/>
+                        <p>Your Loan ${object.name} Request has been Rejected by ${object.env.user.name}</p>
+                        <br/><br/>
+
+                        <p><strong>Regards, </strong></p>
+                        <p>${object.env.user.name}</p>
+                    </p>
+                </div>
+            </field>
+        </record>
+    </data>
+ </odoo>

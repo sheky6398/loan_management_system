@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_loan_installment">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.external_layout">
+                <div class="page">
+
+                    <div class="row mt32 mb32" >
+                        <div class="col-auto col-3 mw-100 mb-2">
+                            <strong><p class="m-0" t-field="o.employee_id"/></strong>
+                            <p class="m-0" t-field="o.department_id"/>
+                            <p class="m-0" t-field="o.job_title"/>
+                        </div>
+                        <div class="col-auto col-8 mw-100 mb-2">
+                            <strong><p class="m-0" t-field="o.employee_id.address_id"/></strong>
+                            <p class="m-0" t-field="o.employee_id.address_id.street"/>
+                            <span class="m-0" t-field="o.employee_id.address_id.state_id"/>
+                            <span class="m-0" t-field="o.employee_id.address_id.zip"/>
+                            <p class="m-0" t-field="o.employee_id.address_id.country_id"/>
+
+                        </div>
+                        
+                    </div>
+                    <br/><br/>
+                    <table  class="table table-bordered o_main_table">
+                        <div class="text-left"> 
+                            <strong>
+                                <h3>
+                                    <u>Installment Details</u>
+                                </h3>
+                            </strong>
+                        </div>
+                        <thead style="display: table-row-group">
+                            <tr>
+                                <th scope="col">Installment Reference</th>
+                                <th scope="col">Application id</th>
+                                <th scope="col">Date payment</th>
+                                <th scope="col">Mode</th>
+                                <th scope="col">Monthly emi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="o.installment_ids" t-as="line">
+                                <tr>
+                                    <td >
+                                        <span t-field="line.name"/>
+                                    </td>
+                                    <td >
+                                        <span t-field="line.application_id"/>
+                                    </td>
+                                    <td >
+                                        <span t-field="line.date_due"/>
+                                    </td>
+                                    <td >
+                                        <span t-field="line.mode"/>
+                                    </td>
+                                    <td >
+                                        <span t-field="line.monthly_emi"/>
+                                    </td>
+
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <div class="clearfix" name="so_total_summary">
+                        <div id="total" class="row" name="total">
+                            <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+                                <table class="table table-sm">
+                                    <tr class="border-black o_total">
+                                        <td name="td_amount_total_label"><strong>Total</strong></td>
+                                        <td name="td_amount_total" class="text-right">
+                                            <span t-field="o.loan_amount"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </t>
+
+</template>
+
+</odoo>

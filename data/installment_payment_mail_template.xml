@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="installment_payment_email_template" model="mail.template">
+            <field name="name">Payment Done : Send By Email</field>
+            <field name="model_id" ref="loan_management_system.model_loan_installment"/>
+            <field name="email_from">${object.env.user.employee_id.work_email} </field>
+            <field name="email_to">${object.application_id.accountant_id.work_email}	</field>
+            <field name="subject">Payment Has Been Done By ${object.application_id.employee_id.name}</field>
+            <field name="body_html" type="html">
+                <div style="margin:0px; padding:0px;">
+                    <p style="margin:0px; padding:0px; font-size:15px;">
+                        Dear <strong>${object.application_id.accountant_id.name}</strong>
+                        <br/><br/>
+                        Payment has been done by<strong>${object.application_id.employee_id.name}</strong>
+                        <br/><br/>
+                        <p>I have paid my monthly installment so please look into it and mark installment status as Paid</p>
+                        <br/><br/>
+                        <p><h3><strong>Installment Details : </strong></h3></p>
+                        <p>Installment Reference : <strong> ${object.name}</strong></p>
+                        <p>Application Number : <strong> ${object.application_id.name}</strong></p>
+                        <p>Employee Name: <strong> ${object.application_id.employee_id.name}</strong></p>
+                        <p>Monthly Emi : <strong> ${object.monthly_emi}</strong></p>
+                        <p>Mode : <strong> ${object.mode}</strong></p>
+                        <p>Paid Date : <strong> ${object.date_paid}</strong></p>
+                        <br/><br/>
+                        <p><strong>Regards, </strong></p>
+                        <p>${object.application_id.employee_id.name}</p>
+                    </p>
+                </div>
+            </field>
+        </record>
+    </data>
+ </odoo>

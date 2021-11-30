@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="action_report_loan_application" model="ir.actions.report">
+            <field name="name">Loan Application</field>
+            <field name="model">loan.application</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">loan_management_system.report_loan_application</field>
+            <field name="report_file">loan_management_system.report_loan_application</field>
+            <field name="binding_model_id" ref="model_loan_application"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_loan_installment" model="ir.actions.report">
+            <field name="name">Loan Installments</field>
+            <field name="model">loan.application</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">loan_management_system.report_loan_installment</field>
+            <field name="report_file">loan_management_system.report_loan_installment</field>
+            <field name="binding_model_id" ref="model_loan_application"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>
+

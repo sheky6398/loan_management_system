@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="application_accepted_wizard_view_form">
+            <field name="name">application.accepted.wizard.view.form</field>
+            <field name="model">application.accepted.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <label for='approval_comment' />                                      
+                    <field name="approval_comment" required="True"/>                  
+                    <footer>
+                        <button string="Submit" type="object" name="application_accepted" class="btn-success" />
+                        <button string="Cancel" special="cancel" class="btn-danger"/>
+                    </footer> 
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_application_accepted_wizard">
+            <field name="name">Loan Approval Comment</field>
+            <field name="res_model">application.accepted.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>   
+    </data>
+</odoo>
+

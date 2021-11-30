@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="loan_installment_payment_wizard_view_form">
+            <field name="name">loan.installment.payment.wizard.view.form</field>
+            <field name="model">loan.installment.payment.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <!-- <field name="name" colspan="8" /> -->
+                            <field name="application_id" invisible="1"/>
+                            <field name="monthly_emi"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group> 
+                        <group>
+                            <field name="date_payment"/>
+                            <field name="mode"/>
+                        </group> 
+                    </group>
+                    <notebook>
+                        <page string='Note'>
+                            <label for="note"/>
+                                <field name="note"/>
+                        </page> 
+                    </notebook>               
+                    <footer>
+                        <button string="Submit" type="object" name="action_payment" class="btn-success" />
+                        <button string="Cancel" special="cancel" class="btn-danger"/>
+                    </footer> 
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+
+        <record model="ir.actions.act_window" id="action_loan_installment_payment_wizard">
+            <field name="name">Installment Payment</field>
+            <field name="res_model">loan.installment.payment.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>   
+    </data>
+</odoo>

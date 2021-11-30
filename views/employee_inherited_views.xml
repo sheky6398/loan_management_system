@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="employee_inherited_view_form">
+        <field name="name">employee.inherited.view.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">           
+                <xpath expr="//div[@name='button_box']" position="before">
+                        <div class="oe_button_box" name="button_box">                           
+                            <button class="oe_stat_button" type="action" name="%(loan_management_system.loan_application_action)d"
+                                icon="fa-usd"  string="Loan Request" widget="statinfo"/>       
+                        </div>            
+                </xpath>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_employee_inherited">
+        <field name="name">Employee Inherited</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">form</field>
+    </record>
+    
+</odoo>
